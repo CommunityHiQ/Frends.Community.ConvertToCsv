@@ -24,7 +24,22 @@ namespace Frends.Community.ConvertToCSV.Tests
             Assert.AreEqual(ConvertToCsvTestData.ExpectedCsvResult, result.Result);
         }
 
-        [Test]
+        public void TestConvertXmlToCsvWithSpecialCharacters()
+        {
+            var indata = new ConvertToCsv.Input
+            {
+                InputData = "<root><v1>foo1</v1><v2>bar2;bar2</v2><v3>baz3\r\nbaz3</v3><v4>\"fo\"o4\"</v4></root>",
+                FileType = ConvertToCsv.FileType.Xml,
+                CsvSeparator = ",",
+                IncludeHeaders = true
+            };
+
+            var result = ConvertToCsv.ExecuteConvertToCsv(indata, new CancellationToken());
+            System.Console.WriteLine(result.Result);
+            Assert.AreEqual("v1;v2;v3;v4\r\nfoo1;\"bar2;bar2\";\"baz3\nbaz3\";\"\"\"fo\"\"o4\"\"\"\r\n", result.Result);
+        }
+
+    [Test]
         [ExpectedException("System.Xml.XmlException")]
         public void TestConvertToCSVXML_WithWrongFileType_ShouldThrowAnException()
         {

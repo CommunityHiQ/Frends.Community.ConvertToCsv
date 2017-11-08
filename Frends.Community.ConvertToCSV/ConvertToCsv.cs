@@ -88,10 +88,10 @@ namespace Frends.Community.ConvertToCSV
                     throw new InvalidDataException("The input data type was not recognized. Supported data types are XML and JSON");
             }
 
-            return new Output { Result = ConvertDataTableToCsv(dataset.Tables[0], input.CsvSeparator, input.IncludeHeaders)};
+            return new Output { Result = ConvertDataTableToCsv(dataset.Tables[0], input.CsvSeparator, input.IncludeHeaders, cancellationToken)};
         }
 
-        private static string ConvertDataTableToCsv(DataTable datatable, string separator, bool includeHeaders)
+        private static string ConvertDataTableToCsv(DataTable datatable, string separator, bool includeHeaders, CancellationToken cancellationToken)
         {
             var stringBuilder = new StringBuilder();
 
@@ -103,7 +103,9 @@ namespace Frends.Community.ConvertToCSV
 
             foreach (DataRow row in datatable.Rows)
             {
+                cancellationToken.ThrowIfCancellationRequested();
                 IEnumerable<string> fields = row.ItemArray.Select(field => field.ToString());
+                fields = fields.Select(x => (x.Contains(separator) || x.Contains("\n") || x.Contains("\"")) ? "\"" + x.Replace("\"", "\"\"") + "\"" : x); // Fixes cases where input field contains special characters
                 stringBuilder.AppendLine(string.Join(separator, fields));
             }
 
