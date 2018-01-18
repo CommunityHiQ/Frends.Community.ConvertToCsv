@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Frends.Community.ConvertToCSV.Tests.CsvValidation
+namespace Frends.Community.ConvertToCsv.Tests.CsvValidation
 {
     public static class ConvertToCsvTestData
     {

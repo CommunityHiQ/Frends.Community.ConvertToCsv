@@ -7,8 +7,8 @@
     <ProjectGuid>{B9903D7F-C591-463A-94C6-173F1605C22A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Frends.Community.ConvertToCSV</RootNamespace>
-    <AssemblyName>Frends.Community.ConvertToCSV</AssemblyName>
+    <RootNamespace>Frends.Community.ConvertToCsv</RootNamespace>
+    <AssemblyName>Frends.Community.ConvertToCsv</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -28,7 +28,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Release\Frends.Community.ConvertToCSV.xml</DocumentationFile>
+    <DocumentationFile>bin\Release\Frends.Community.ConvertToCsv.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">

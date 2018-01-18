@@ -1,5 +1,5 @@
 **[Table of Contents](http://tableofcontent.eu)**
-- [Frends.Community.ConvertToCSV](#frendscommunityconverttocsv)
+- [Frends.Community.ConvertToCsv](#frendscommunityconverttocsv)
   - [Contributing](#contributing)
   - [Documentation](#documentation)
     - [Input](#input)
@@ -7,7 +7,7 @@
   - [License](#license)
 
 
-# Frends.Community.ConvertToCSV
+# Frends.Community.ConvertToCsv
 FRENDS Task to convert JSON or XML to CSV. Some Frends4 tasks already provide method .ToCSV() which does the same and this might be obsolete. 
 
 ## Contributing

@@ -11,56 +11,56 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Schema;
 
-namespace Frends.Community.ConvertToCSV
+namespace Frends.Community.ConvertToCsv
 {
+    public enum FileType { Json, Xml }
+
+    public class Input
+    {
+        /// <summary>
+        /// Data to be converted into csv
+        /// </summary>
+        [DisplayName("Input data")]
+        public string InputData { get; set; }
+
+        /// <summary>
+        /// File type. Either Xml or Json.
+        /// </summary>
+        [DefaultValue(FileType.Xml)]
+        public FileType FileType { get; set; }
+
+        /// <summary>
+        /// Separator for the output columns.
+        /// </summary>
+        [DefaultValue("\";\"")]
+        public string CsvSeparator { get; set; }
+
+        /// <summary>
+        /// True if the column headers should be included into the output.
+        /// </summary>
+        [DefaultValue(true)]
+        public bool IncludeHeaders { get; set; }
+    }
+    /// <summary>
+    /// Return object
+    /// </summary>
+    public class Output
+    {
+        /// <summary>
+        /// Result csv
+        /// </summary>
+        public string Result { get; set; }
+    }
+
     public class ConvertToCsv
     {
-        public enum FileType { Json, Xml}
-
-        public class Input
-        {
-            /// <summary>
-            /// Data to be converted into csv
-            /// </summary>
-            [DisplayName("Input data")]
-            public string InputData { get; set; }
-
-            /// <summary>
-            /// Type of the file. Either Xml or Json.
-            /// </summary>
-            [DefaultValue(FileType.Xml)]
-            public FileType FileType { get; set; }
-
-            /// <summary>
-            /// Separator for the output columns.
-            /// </summary>
-            [DefaultValue("\";\"")]
-            public string CsvSeparator { get; set; }
-
-            /// <summary>
-            /// True if the column headers should be included into the output.
-            /// </summary>
-            [DefaultValue(true)]
-            public bool IncludeHeaders { get; set; }
-        }
-        /// <summary>
-        /// Return object
-        /// </summary>
-        public class Output
-        {
-            /// <summary>
-            /// Result CSV
-            /// </summary>
-            public string Result { get; set; }
-        }
-
         /// <summary>
         /// Convert xml or json data into the csv formated data. Errors are always thrown by an exception.
         /// </summary>
         /// <param name="input">Input data</param>
         /// <param name="cancellationToken"></param>
         /// <returns>Object {string Result }</returns>
-        public static Output ExecuteConvertToCsv(Input input, CancellationToken cancellationToken)
+        public static Output ConvertToCsvTask(Input input, CancellationToken cancellationToken)
         {
             cancellationToken.ThrowIfCancellationRequested();
             DataSet dataset;
@@ -70,7 +70,7 @@ namespace Frends.Community.ConvertToCSV
                 case FileType.Json:
                     // Validate indata against the JSON schema
                     var schema = JsonSchema.Parse(ValidSchemas.ValidJsonSchema);
-                    JObject jsonInput = JObject.Parse(input.InputData);
+                    var jsonInput = JObject.Parse(input.InputData);
                     if (!jsonInput.IsValid(schema))
                     {
                         throw new InvalidDataException("The input data does't comply with the schema");
@@ -97,14 +97,14 @@ namespace Frends.Community.ConvertToCSV
 
             if (includeHeaders)
             {
-                IEnumerable<string> columnNames = datatable.Columns.Cast<DataColumn>().Select(column => column.ColumnName);
+                var columnNames = datatable.Columns.Cast<DataColumn>().Select(column => column.ColumnName);
                 stringBuilder.AppendLine(string.Join(separator, columnNames));
             }
 
             foreach (DataRow row in datatable.Rows)
             {
                 cancellationToken.ThrowIfCancellationRequested();
-                IEnumerable<string> fields = row.ItemArray.Select(field => field.ToString());
+                var fields = row.ItemArray.Select(field => field.ToString());
                 fields = fields.Select(x => (x.Contains(separator) || x.Contains("\n") || x.Contains("\"")) ? "\"" + x.Replace("\"", "\"\"") + "\"" : x); // Fixes cases where input field contains special characters
                 stringBuilder.AppendLine(string.Join(separator, fields));
             }

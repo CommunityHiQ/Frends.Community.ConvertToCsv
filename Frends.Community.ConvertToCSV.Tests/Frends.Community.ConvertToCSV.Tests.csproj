@@ -7,8 +7,8 @@
     <ProjectGuid>{17223ED0-3306-4BB2-9E11-108AD44AA58E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Frends.Community.ConvertToCSV.Tests</RootNamespace>
-    <AssemblyName>Frends.Community.ConvertToCSV.Tests</AssemblyName>
+    <RootNamespace>Frends.Community.ConvertToCsv.Tests</RootNamespace>
+    <AssemblyName>Frends.Community.ConvertToCsv.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -38,7 +38,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConvertToCSVTests.cs" />
+    <Compile Include="ConvertToCsvTests.cs" />
     <Compile Include="CsvValidation\ConvertToCsvTestData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -46,9 +46,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Frends.Community.ConvertToCSV\Frends.Community.ConvertToCSV.csproj">
+    <ProjectReference Include="..\Frends.Community.ConvertToCSV\Frends.Community.ConvertToCsv.csproj">
       <Project>{b9903d7f-c591-463a-94c6-173f1605c22a}</Project>
-      <Name>Frends.Community.ConvertToCSV</Name>
+      <Name>Frends.Community.ConvertToCsv</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
