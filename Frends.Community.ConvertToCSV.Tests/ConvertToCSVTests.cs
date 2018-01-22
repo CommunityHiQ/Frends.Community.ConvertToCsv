@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System.Xml;
+using System.Threading;
 using Frends.Community.ConvertToCsv.Tests.CsvValidation;
 using NUnit.Framework;
 
@@ -38,8 +39,7 @@ namespace Frends.Community.ConvertToCsv.Tests
             Assert.AreEqual("v1;v2;v3;v4\r\nfoo1;\"bar2;bar2\";\"baz3\nbaz3\";\"\"\"fo\"\"o4\"\"\"\r\n", result.Result);
         }
 
-    [Test]
-        [ExpectedException("System.Xml.XmlException")]
+        [Test]
         public void TestConvertToCsv_Xml_WithWrongFileType_ShouldThrowAnException()
         {
             var indata = new Input
@@ -50,11 +50,10 @@ namespace Frends.Community.ConvertToCsv.Tests
                 IncludeHeaders = true
             };
 
-            ConvertToCsv.ConvertToCsvTask(indata, new CancellationToken());
+            Assert.Throws<XmlException>(() => ConvertToCsv.ConvertToCsvTask(indata, new CancellationToken()));
         }
 
         [Test]
-        [ExpectedException("System.IO.InvalidDataException")]
         public void TestConvertToCsv_Json_ThrowsError_WhenInvalidJSONSchemaIsUsed()
         {
             var indata = new Input
@@ -65,7 +64,7 @@ namespace Frends.Community.ConvertToCsv.Tests
                 IncludeHeaders = true
             };
 
-            ConvertToCsv.ConvertToCsvTask(indata, new CancellationToken());
+            Assert.Throws<System.IO.InvalidDataException>(() => ConvertToCsv.ConvertToCsvTask(indata, new CancellationToken()));
         }
 
         [Test]
