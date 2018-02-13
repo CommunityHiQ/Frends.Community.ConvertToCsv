@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Data;
 using System.IO;
 using System.Linq;
@@ -10,6 +9,8 @@ using FRENDS;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Schema;
+
+#pragma warning disable 1591
 
 namespace Frends.Community.ConvertToCsv
 {

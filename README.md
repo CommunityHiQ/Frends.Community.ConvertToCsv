@@ -27,10 +27,10 @@ NOTE: Be sure to merge the latest from "upstream" before making a pull request!
 
 | Property				|  Type   | Description								| Example                     |
 |-----------------------|---------|-----------------------------------------|-----------------------------|
-| InputData				| string	| Supported formats JSON and XML | ´<root><field>1</field></root>´ |
-| FileType			| FileType	| JSON or XML	| ´Xml´ |
-| CsvSeparator			| string	| Separator for the output columns	| ´;´ |
-| IncludeHeaders		| bool	| True if the column headers should be included into the output	| ´true´ |
+| InputData				| string	| Supported formats JSON and XML | `<root><field>1</field></root>` |
+| FileType			| FileType	| JSON or XML	| `Xml` |
+| CsvSeparator			| string	| Separator for the output columns	| `;` |
+| IncludeHeaders		| bool	| True if the column headers should be included into the output	| `true` |
 
 ### Result
 
