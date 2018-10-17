@@ -5,35 +5,23 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Xml;
-using FRENDS;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using Newtonsoft.Json.Schema;
 
 #pragma warning disable 1591
 
-namespace Frends.Community.ConvertToCsv
+namespace Frends.Community.ConvertXmlToCsv
 {
-    public enum FileType { Json, Xml }
-
     public class Input
     {
         /// <summary>
-        /// Data to be converted into csv
+        /// XML string to be converted into csv
         /// </summary>
-        [DisplayName("Input data")]
-        public string InputData { get; set; }
-
-        /// <summary>
-        /// File type. Either Xml or Json.
-        /// </summary>
-        [DefaultValue(FileType.Xml)]
-        public FileType FileType { get; set; }
+        [DisplayName("Input XML as string")]
+        public string InputXmlString { get; set; }
 
         /// <summary>
         /// Separator for the output columns.
         /// </summary>
-        [DefaultValue("\";\"")]
+        [DefaultValue("\",\"")]
         public string CsvSeparator { get; set; }
 
         /// <summary>
@@ -53,41 +41,19 @@ namespace Frends.Community.ConvertToCsv
         public string Result { get; set; }
     }
 
-    public class ConvertToCsv
+    public class ConvertXmlToCsv
     {
         /// <summary>
-        /// Convert xml or json data into the csv formated data. Errors are always thrown by an exception.
+        /// Convert xml or json data into the csv formated data. Errors are always thrown by an exception. See: https://github.com/CommunityHiQ/Frends.Community.ConvertToCsv
         /// </summary>
         /// <param name="input">Input data</param>
         /// <param name="cancellationToken"></param>
         /// <returns>Object {string Result }</returns>
-        public static Output ConvertToCsvTask(Input input, CancellationToken cancellationToken)
+        public static Output ConvertXmlToCsvTask(Input input, CancellationToken cancellationToken)
         {
-            cancellationToken.ThrowIfCancellationRequested();
             DataSet dataset;
-
-            switch (input.FileType)
-            {
-                case FileType.Json:
-                    // Validate indata against the JSON schema
-                    var schema = JsonSchema.Parse(ValidSchemas.ValidJsonSchema);
-                    var jsonInput = JObject.Parse(input.InputData);
-                    if (!jsonInput.IsValid(schema))
-                    {
-                        throw new InvalidDataException("The input data does't comply with the schema");
-                    }
-
-                    dataset = JsonConvert.DeserializeObject<DataSet>(input.InputData);
-                    break;
-
-                case FileType.Xml:
-                    dataset = new DataSet();
-                    dataset.ReadXml(XmlReader.Create(new StringReader(input.InputData)));
-                    break;
-
-                default:
-                    throw new InvalidDataException("The input data type was not recognized. Supported data types are XML and JSON");
-            }
+            dataset = new DataSet();
+            dataset.ReadXml(XmlReader.Create(new StringReader(input.InputXmlString)));
 
             return new Output { Result = ConvertDataTableToCsv(dataset.Tables[0], input.CsvSeparator, input.IncludeHeaders, cancellationToken)};
         }

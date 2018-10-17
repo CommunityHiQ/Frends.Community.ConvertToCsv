@@ -2,12 +2,15 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
   <metadata>
     <id>Frends.Community.ConvertToCsv</id>
-    <version>1.0.0</version>
+    <version>1.0.5</version>
     <title>Frends.Community.ConvertToCsv</title>
     <authors>HiQ Finland</authors>
-    <owners />
+    <owners>HiQ Finland</owners>
+    <licenseUrl>https://github.com/CommunityHiQ/Frends.Community.ConvertToCsv/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/CommunityHiQ/Frends.Community.ConvertToCsv</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Frends.Community.ConvertToCsv</description>
+    <copyright>HiQ Finland</copyright>
     <summary />
     <dependencies />
     <frameworkAssemblies>

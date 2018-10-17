@@ -41,9 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConvertToCsv.cs" />
+    <Compile Include="ConvertXmlToCsv.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="models\ValidSchemas.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

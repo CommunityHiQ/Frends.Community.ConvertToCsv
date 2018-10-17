@@ -41,14 +41,14 @@
     <Reference Include="System.XML" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConvertToCsvTests.cs" />
-    <Compile Include="CsvValidation\ConvertToCsvTestData.cs" />
+    <Compile Include="ConvertXmlToCsvTests.cs" />
+    <Compile Include="CsvValidation\ConvertXmlToCsvTestData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Frends.Community.ConvertToCSV\Frends.Community.ConvertToCsv.csproj">
+    <ProjectReference Include="..\Frends.Community.ConvertToCsv\Frends.Community.ConvertXmlToCsv.csproj">
       <Project>{b9903d7f-c591-463a-94c6-173f1605c22a}</Project>
-      <Name>Frends.Community.ConvertToCsv</Name>
+      <Name>Frends.Community.ConvertXmlToCsv</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
