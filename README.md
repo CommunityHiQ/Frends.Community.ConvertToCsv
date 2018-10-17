@@ -27,21 +27,22 @@ NOTE: Be sure to merge the latest from "upstream" before making a pull request!
 
 | Property				|  Type   | Description								| Example                     |
 |-----------------------|---------|-----------------------------------------|-----------------------------|
-| InputData				| string	| XML string to be converted into csv. | ```<root>
-	<row id='1'>
-		<name>Google</name>
-		<url>https://en.wikipedia.org/wiki/Google</url>
-		<fancy_characters>comma (,) inside field</fancy_characters>
-	</row>
-	<row id='2'>
-		<name>Apple</name>
-		<url>https://en.wikipedia.org/wiki/Apple_Inc.</url>
-		<fancy_characters>Kanji 漢字</fancy_characters>
-	</row>
-	<row id='3'>
-		<name>Missing columns</name>
-	</row>
-</root>``` |
+| InputData				| string	| XML string to be converted into csv. | 
+```&lt;root&gt;
+	&lt;row id='1'&gt;
+		&lt;name&gt;Google&lt;/name&gt;
+		&lt;url&gt;https://en.wikipedia.org/wiki/Google&lt;/url&gt;
+		&lt;fancy_characters&gt;comma (,) inside field&lt;/fancy_characters&gt;
+	&lt;/row&gt;
+	&lt;row id='2'&gt;
+		&lt;name&gt;Apple&lt;/name&gt;
+		&lt;url&gt;https://en.wikipedia.org/wiki/Apple_Inc.&lt;/url&gt;
+		&lt;fancy_characters&gt;Kanji 漢字&lt;/fancy_characters&gt;
+	&lt;/row&gt;
+	&lt;row id='3'&gt;
+		&lt;name&gt;Missing columns&lt;/name&gt;
+	&lt;/row&gt;
+&lt;/root&gt;``` |
 | CsvSeparator			| string	| Separator for the output columns.	| `;` |
 | IncludeHeaders		| bool	| True if the column headers should be included into the output	| `true` |
 
@@ -52,7 +53,33 @@ NOTE: Be sure to merge the latest from "upstream" before making a pull request!
 | Result        | string   | Result as CSV	| ```name,url,fancy_characters,id
 Google,https://en.wikipedia.org/wiki/Google,"comma (,) inside field",1
 Apple,https://en.wikipedia.org/wiki/Apple_Inc.,Kanji 漢字,2
-Missing columns,,,3 ```
+Missing columns,,,3 ```|
+
+
+If input XML string contains multiple fields with same name, they are omited. Also rows must be in element with same name. If id is not given for row as a attribute filed named rowname_id is added, with row number. 
+
+For example, following XML:
+```<table>
+	<foo>
+		<bar>700</bar>
+		<foobar>12</foobar>
+	</foo>
+	<foo>
+		<bar>800</bar>
+		<bar>800</bar>
+		<foobar>5</foobar>
+	</foo>
+	<invalid>
+		<bar>200</bar>
+		<foobar>7</foobar>
+	</invalid>
+</table>```
+
+is thus converted to:
+
+```foo_Id,foobar
+0,12
+1,5```
 
 ## License
 
