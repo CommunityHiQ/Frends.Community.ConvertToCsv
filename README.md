@@ -27,7 +27,7 @@ NOTE: Be sure to merge the latest from "upstream" before making a pull request!
 
 | Property				|  Type   | Description								| Example                     |
 |-----------------------|---------|-----------------------------------------|-----------------------------|
-| InputData				| string	| XML string to be converted into csv. | `<root>
+| InputData				| string	| XML string to be converted into csv. | ```<root>
 	<row id='1'>
 		<name>Google</name>
 		<url>https://en.wikipedia.org/wiki/Google</url>
@@ -41,7 +41,7 @@ NOTE: Be sure to merge the latest from "upstream" before making a pull request!
 	<row id='3'>
 		<name>Missing columns</name>
 	</row>
-</root>` |
+</root>``` |
 | CsvSeparator			| string	| Separator for the output columns.	| `;` |
 | IncludeHeaders		| bool	| True if the column headers should be included into the output	| `true` |
 
@@ -49,10 +49,10 @@ NOTE: Be sure to merge the latest from "upstream" before making a pull request!
 
 | Property      | Type     | Description                      | Example                     |
 |---------------|----------|----------------------------------|-----------------------------|
-| Result        | string   | Result as CSV	| `name,url,fancy_characters,id
+| Result        | string   | Result as CSV	| ```name,url,fancy_characters,id
 Google,https://en.wikipedia.org/wiki/Google,"comma (,) inside field",1
 Apple,https://en.wikipedia.org/wiki/Apple_Inc.,Kanji 漢字,2
-Missing columns,,,3 `
+Missing columns,,,3 ```
 
 ## License
 
