@@ -1,4 +1,4 @@
-**[Table of Contents](http://tableofcontent.eu)**
+﻿**[Table of Contents](http://tableofcontent.eu)**
 - [Frends.Community.ConvertToCsv](#frendscommunityconverttocsv)
   - [Contributing](#contributing)
   - [Documentation](#documentation)
