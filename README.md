@@ -32,8 +32,8 @@ NOTE: Be sure to merge the latest from "upstream" before making a pull request!
 | IncludeHeaders		| bool	| True if the column headers should be included into the output	| `true` |
 
 Example input:
-
-```<root>
+```
+<root>
 	<row id='1'>
 		<name>Google</name>
 		<url>https://en.wikipedia.org/wiki/Google</url>
@@ -47,7 +47,8 @@ Example input:
 	<row id='3'>
 		<name>Missing columns</name>
 	</row>
-</root>```
+</root>
+```
 
 ### Result
 
@@ -55,17 +56,19 @@ Example input:
 |---------------|----------|----------------------------------|-----------------------------|
 | Result        | string   | Result as CSV	| See bellow. |
 
-Example output, for output given above:
-
-```name,url,fancy_characters,id
+Example output, for input given above, with comma as a delimeter and headers included:
+```
+name,url,fancy_characters,id
 Google,https://en.wikipedia.org/wiki/Google,"comma (,) inside field",1
 Apple,https://en.wikipedia.org/wiki/Apple_Inc.,Kanji 漢字,2
-Missing columns,,,3 ```
+Missing columns,,,3
+```
 
-If input XML string contains multiple fields with same name, they are omited. Also rows must be in element with same name. If id is not given for row as a attribute filed named rowname_id is added, with row number. 
+If input XML string contains multiple fields with same name, they are omited. Also rows must be in element with same name. If id is not given for row as a attribute filed named rowname_Id is added, with row number. 
 
 For example, following XML:
-```<table>
+```
+<table>
 	<foo>
 		<bar>700</bar>
 		<foobar>12</foobar>
@@ -79,13 +82,16 @@ For example, following XML:
 		<bar>200</bar>
 		<foobar>7</foobar>
 	</invalid>
-</table>```
+</table>
+```
 
-is thus converted to:
+is thus converted to, using comma as a delimeter and headers included:
 
-```foo_Id,foobar
+```
+foo_Id,foobar
 0,12
-1,5```
+1,5
+```
 
 ## License
 
