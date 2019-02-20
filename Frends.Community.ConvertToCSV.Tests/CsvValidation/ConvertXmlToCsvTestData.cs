@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace Frends.Community.ConvertToCsv.Tests.CsvValidation
+namespace Frends.Community.ConvertXmlToCsv.Tests.CsvValidation
 {
-    public static class ConvertToCsvTestData
+    public static class ConvertXmlToCsvTestData
     {
         private static string _testXml;
         private static string _expectedCsvResult;
@@ -80,35 +80,6 @@ asd,asd,asd,asd,asd,asd
                     }";
                 }
                 return _testJSON;
-            }
-        }
-
-        public static string InvalidJson
-        {
-            get
-            {
-                if (string.IsNullOrEmpty(_invalidJSON))
-                {
-                    _invalidJSON =  @"
-                        {
-                          'table': [
-                            {
-                              'Name': 'Superman',
-                              'Color': 'Blue',
-                              'Number': '1',
-                              'Superpower': 'Fly',
-                              'Enemy': 'Lex Lutor'
-                            },
-                            {
-                              'Name': 'Spiderman',
-                              'Color': 'Red',
-                              'Number': '2',
-                               'Enemies':['Green Goldin', 'Doctor Octopus','Venom']
-                            }
-                          ]
-                        }";
-                }
-                return _invalidJSON;
             }
         }
     }

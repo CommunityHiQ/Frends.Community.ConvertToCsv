@@ -1,4 +1,4 @@
-**[Table of Contents](http://tableofcontent.eu)**
+﻿**[Table of Contents](http://tableofcontent.eu)**
 - [Frends.Community.ConvertToCsv](#frendscommunityconverttocsv)
   - [Contributing](#contributing)
   - [Documentation](#documentation)
@@ -8,7 +8,7 @@
 
 
 # Frends.Community.ConvertToCsv
-FRENDS Task to convert JSON or XML to CSV. Some Frends4 tasks already provide method .ToCSV() which does the same and this might be obsolete. 
+FRENDS Task to convert XML to CSV. XML needs to represent a table, othervice conversion fails.
 
 ## Contributing
 When contributing to this repository, please first discuss the change you wish to make via issue, email, or any other method with the owners of this repository before making a change.
@@ -27,17 +27,78 @@ NOTE: Be sure to merge the latest from "upstream" before making a pull request!
 
 | Property				|  Type   | Description								| Example                     |
 |-----------------------|---------|-----------------------------------------|-----------------------------|
-| InputData				| string	| Supported formats JSON and XML | `<root><field>1</field></root>` |
-| FileType			| FileType	| JSON or XML	| `Xml` |
-| CsvSeparator			| string	| Separator for the output columns	| `;` |
+| InputData				| string	| XML string to be converted into csv. | See bellow. |
+| CsvSeparator			| string	| Separator for the output columns.	| `;` |
 | IncludeHeaders		| bool	| True if the column headers should be included into the output	| `true` |
+
+Example input:
+```
+<root>
+	<row id='1'>
+		<name>Google</name>
+		<url>https://en.wikipedia.org/wiki/Google</url>
+		<fancy_characters>comma (,) inside field</fancy_characters>
+	</row>
+	<row id='2'>
+		<name>Apple</name>
+		<url>https://en.wikipedia.org/wiki/Apple_Inc.</url>
+		<fancy_characters>Kanji 漢字</fancy_characters>
+	</row>
+	<row id='3'>
+		<name>Missing columns</name>
+	</row>
+</root>
+```
 
 ### Result
 
-| Property      | Type     | Description                      |
-|---------------|----------|----------------------------------|
-| Result        | string   | Result as CSV	|
+| Property      | Type     | Description                      | Example                     |
+|---------------|----------|----------------------------------|-----------------------------|
+| Result        | string   | Result as CSV	| See bellow. |
+
+Example output, for input given above, with comma as a delimeter and headers included:
+```
+name,url,fancy_characters,id
+Google,https://en.wikipedia.org/wiki/Google,"comma (,) inside field",1
+Apple,https://en.wikipedia.org/wiki/Apple_Inc.,Kanji 漢字,2
+Missing columns,,,3
+```
+
+If input XML string contains multiple fields with same name, they are omited. Also rows must be in element with same name. If id is not given for row as a attribute filed named rowname_Id is added, with row number. 
+
+For example, following XML:
+```
+<table>
+	<foo>
+		<bar>700</bar>
+		<foobar>12</foobar>
+	</foo>
+	<foo>
+		<bar>800</bar>
+		<bar>800</bar>
+		<foobar>5</foobar>
+	</foo>
+	<invalid>
+		<bar>200</bar>
+		<foobar>7</foobar>
+	</invalid>
+</table>
+```
+
+is thus converted to, using comma as a delimeter and headers included:
+
+```
+foo_Id,foobar
+0,12
+1,5
+```
 
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details
+
+# Change Log
+
+| Version             | Changes                 |
+| ---------------------| ---------------------|
+| 2.0.0 | Task renamed. New task can only convert XML to CSV. Csv.Create should be used to convert JSOn to CSV. |
