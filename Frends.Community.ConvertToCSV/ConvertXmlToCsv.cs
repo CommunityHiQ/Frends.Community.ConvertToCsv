@@ -41,7 +41,7 @@ namespace Frends.Community.ConvertXmlToCsv
         public string Result { get; set; }
     }
 
-    public class ConvertXmlToCsv
+    public class XmlToCsv
     {
         /// <summary>
         /// Convert xml or json data into the csv formated data. Errors are always thrown by an exception. See: https://github.com/CommunityHiQ/Frends.Community.ConvertToCsv
@@ -49,7 +49,7 @@ namespace Frends.Community.ConvertXmlToCsv
         /// <param name="input">Input data</param>
         /// <param name="cancellationToken"></param>
         /// <returns>Object {string Result }</returns>
-        public static Output ConvertXmlToCsvTask(Input input, CancellationToken cancellationToken)
+        public static Output ConvertXmlToCsv(Input input, CancellationToken cancellationToken)
         {
             DataSet dataset;
             dataset = new DataSet();

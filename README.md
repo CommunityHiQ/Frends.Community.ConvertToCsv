@@ -90,3 +90,9 @@ is thus converted to:
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details
+
+# Change Log
+
+| Version             | Changes                 |
+| ---------------------| ---------------------|
+| 2.0.0 | Task renamed. New task can only convert XML to CSV. Csv.Create should be used to convert JSOn to CSV. |
