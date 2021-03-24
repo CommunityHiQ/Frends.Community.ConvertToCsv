@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Frends.Community.ConvertToCsv\Frends.Community.ConvertXmlToCsv.csproj" />
+    <ProjectReference Include="..\Frends.Community.ConvertXmlToCsv\Frends.Community.ConvertXmlToCsv.csproj" />
   </ItemGroup>
 
 
