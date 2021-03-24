@@ -102,3 +102,4 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 | Version             | Changes                 |
 | ---------------------| ---------------------|
 | 2.0.0 | Task renamed (old name was ConvertToCsv). New task can only convert XML to CSV. Csv.Create should be used to convert JSOn to CSV. |
+| 2.1.0 | Multitarget support. Everything in namespaces etc. is now renamed to ConvertXmlToCsv. |

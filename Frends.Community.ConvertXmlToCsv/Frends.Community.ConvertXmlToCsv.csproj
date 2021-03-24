@@ -6,10 +6,11 @@
     <copyright>galkios</copyright>
     <PackageLicenseExpression>UNLICENSED</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/CommunityHiQ/Frends.Community.ConvertXmlToCsv</PackageProjectUrl>
+    <Description>Task to convert XML to CSV.</Description>
     <IncludeSource>true</IncludeSource>
     <PackageTags>Frends</PackageTags>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <Version>2.0.5</Version>
+    <Version>2.1.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
