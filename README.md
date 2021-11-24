@@ -1,4 +1,6 @@
-﻿**[Table of Contents](http://tableofcontent.eu)**
+This repository is archived and tasks are moved to https://github.com/CommunityHiQ/Frends.Community.Xml
+
+**[Table of Contents](http://tableofcontent.eu)**
 - [Frends.Community.ConvertToCsv](#frendscommunityconverttocsv)
   - [Contributing](#contributing)
   - [Documentation](#documentation)
